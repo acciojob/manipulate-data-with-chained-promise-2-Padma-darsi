@@ -1,14 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Promise Chain Example</title>
-</head>
-<body>
 
-  <div id="output"></div>
-
-  <script>
     function manipulateArray() {
       // Initial promise: resolves after 3 seconds
       new Promise((resolve) => {
