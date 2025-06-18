@@ -1,31 +1,30 @@
 
-    function manipulateArray()
-		{
-      // Initial promise: resolves after 3 seconds
-      new Promise((resolve) => {
-        setTimeout(() => {
-          resolve([1, 2, 3, 4]);
-        }, 3000);
-      })
-      .then((array) => {
-        // Filter even numbers after 1 second
-        return new Promise((resolve) => {
-          setTimeout(() => {
-            const evenNumbers = array.filter(num => num % 2 === 0);
-            document.getElementById("output").textContent = evenNumbers.toString();
-            resolve(evenNumbers);
-          }, 1000);
+    function manipulateArray() {
+      const data = [1, 2, 3, 4];
+
+      // Immediately resolve with data
+      Promise.resolve(data)
+        .then((array) => {
+          // Wait 1 second and filter even numbers
+          return new Promise((resolve) => {
+            setTimeout(() => {
+              const even = array.filter(n => n % 2 === 0);
+              document.getElementById("output").textContent = even.toString();
+              resolve(even);
+            }, 1000);
+          });
+        })
+        .then((evenArray) => {
+          // Wait 2 seconds and multiply by 2
+          return new Promise((resolve) => {
+            setTimeout(() => {
+              const doubled = evenArray.map(n => n * 2);
+              document.getElementById("output").textContent = doubled.toString();
+              resolve(doubled);
+            }, 2000);
+          });
         });
-      })
-      .then((evenNumbers) => {
-        // Multiply by 2 after 2 seconds
-        return new Promise((resolve) => {
-          setTimeout(() => {
-            const multiplied = evenNumbers.map(num => num * 2);
-            document.getElementById("output").textContent = multiplied.toString();
-            resolve(multiplied);
-          }, 2000);
-        });
-      });
     }
 
+    // Call the function on load
+    manipulateArray();
