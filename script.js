@@ -1,5 +1,6 @@
 
-    function manipulateArray() {
+    function manipulateArray()
+		{
       // Initial promise: resolves after 3 seconds
       new Promise((resolve) => {
         setTimeout(() => {
